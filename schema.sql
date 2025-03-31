@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS players (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    team_name TEXT NOT NULL,
+    player_name TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS game_stats (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    player_id INTEGER NOT NULL,
+    game_date TEXT NOT NULL,
+    points INTEGER DEFAULT 0,
+    assists INTEGER DEFAULT 0,
+    rebounds INTEGER DEFAULT 0,
+    steals INTEGER DEFAULT 0,
+    blocks INTEGER DEFAULT 0,
+    turnovers INTEGER DEFAULT 0,
+    FOREIGN KEY (player_id) REFERENCES players (id) ON DELETE CASCADE
+);
+

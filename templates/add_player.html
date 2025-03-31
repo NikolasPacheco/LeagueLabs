@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Add New Player</h2>
+<form action="{{ url_for('add_player') }}" method="POST">
+    <label for="team_name">Team Name:</label>
+    <input type="text" name="team_name" id="team_name" required>
+
+    <label for="player_name">Player Name:</label>
+    <input type="text" name="player_name" id="player_name" required>
+
+    <button type="submit">Add Player</button>
+</form>
+{% endblock %}

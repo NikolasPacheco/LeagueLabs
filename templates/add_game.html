@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Add Game Stats for {{ player['player_name'] }} ({{ player['team_name'] }})</h2>
+<form action="{{ url_for('add_game', player_id=player['id']) }}" method="POST">
+    <label for="game_date">Game Date:</label>
+    <input type="date" id="game_date" name="game_date" required>
+
+    <label for="points">Points:</label>
+    <input type="number" id="points" name="points" value="0" required>
+
+    <label for="assists">Assists:</label>
+    <input type="number" id="assists" name="assists" value="0" required>
+
+    <label for="rebounds">Rebounds:</label>
+    <input type="number" id="rebounds" name="rebounds" value="0" required>
+
+    <label for="steals">Steals:</label>
+    <input type="number" id="steals" name="steals" value="0" required>
+
+    <label for="blocks">Blocks:</label>
+    <input type="number" id="blocks" name="blocks" value="0" required>
+
+    <label for="turnovers">Turnovers:</label>
+    <input type="number" id="turnovers" name="turnovers" value="0" required>
+
+    <button type="submit">Add Game</button>
+</form>
+{% endblock %}

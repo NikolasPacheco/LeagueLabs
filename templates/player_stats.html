@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Game Stats for {{ player['player_name'] }} ({{ player['team_name'] }})</h2>
+<a href="{{ url_for('add_game', player_id=player['id']) }}">Add Game</a>
+
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Points</th>
+        <th>Assists</th>
+        <th>Rebounds</th>
+        <th>Steals</th>
+        <th>Blocks</th>
+        <th>Turnovers</th>
+        <th>Actions</th>
+    </tr>
+    {% for game in games %}
+    <tr>
+        <td>{{ game['game_date'] }}</td>
+        <td>{{ game['points'] }}</td>
+        <td>{{ game['assists'] }}</td>
+        <td>{{ game['rebounds'] }}</td>
+        <td>{{ game['steals'] }}</td>
+        <td>{{ game['blocks'] }}</td>
+        <td>{{ game['turnovers'] }}</td>
+        <td>
+            <a href="{{ url_for('edit_game', game_id=game['id']) }}">Edit</a>
+            <form action="{{ url_for('delete_game', game_id=game['id']) }}" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
